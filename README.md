@@ -139,3 +139,7 @@ All dependencies are managed within Docker, so no additional installations are r
 - This project is designed for learning and experimentation with Next.js and Docker.
 - The application runs entirely inside the container, ensuring a consistent environment across different systems.
 ---
+
+## Add Examples
+![Imagen](public/images/cap.png)
+
