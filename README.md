@@ -141,5 +141,6 @@ All dependencies are managed within Docker, so no additional installations are r
 ---
 
 ## Add Examples
+![Imagen](public/images/cap2.png)
 ![Imagen](public/images/cap.png)
 
