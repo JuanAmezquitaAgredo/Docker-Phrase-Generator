@@ -1,36 +1,141 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# API Phrase Generator Dockerized Project
 
-## Getting Started
+This project demonstrates a simple **Next.js** application to generate sentences, fully containerized using Docker. The application generates som phrases taht are calles from an API and are mixed randomly.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Phrases generator.
+- Intuitive web interface with real-time responses.
+- Fully Dockerized for portability and consistency.
+
+## Prerequisites
+
+- Docker version 27.4.1 or higher.
+- Docker Compose version v2.32.2 or higher.
+
+## Project Structure
+
+```
+phrase-generator/
+├── app/                  # Next.js App Directory containing pages and API routes
+├── Dockerfile            # Docker configuration for the app
+├── next.config.ts        # Next.js configuration file
+├── public/               # Static assets
+├── tsconfig.json         # TypeScript configuration
+└── README.md             # Documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Backend and Frontend Explanation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Backend
+- **Type:** Serverless API (via Next.js API Routes).
+- **Location:** `app/api/arrays/route.ts`
+- **Purpose:** Generates som phrases taht are calles from an API and are mixed randomly
+- **How it works:** Acts as a stateless function triggered by HTTP requests.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Frontend
+- **Type:** Client-side React Application.
+- **Location:** `app/page.tsx`
+- **Purpose:**
+  - Provides the user interface for button and result display.
+  - Sends the user's input to the backend API.
+  - Displays the API response (results or errors) in real-time.
 
-## Learn More
+## How to Install and Run
 
-To learn more about Next.js, take a look at the following resources:
+### Clone this repository:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+git clone https://github.com/JuanAmezquitaAgredo/Docker-Phrase-Generator.git
+cd phrase-generator-challenge
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Build the Docker image:
 
-## Deploy on Vercel
+```bash
+docker build -t phrase-generator .
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Start the container in development mode:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+docker run -p 3000:3000 phrase-generator
+```
+
+### Access the application:
+
+Open your browser and navigate to:
+
+```
+http://localhost:3000
+```
+
+## How the Application Works
+
+1. Users are presented with a simple, modern interface.
+2. They click on the button.
+3. The backend API choooses a subject and a predicate at random
+4. The results are displayed in real-time on the interface.
+
+## Docker Commands for Beginners
+
+### Build the Image
+
+To build the Docker image:
+
+```bash
+docker build -t phrase-generator .
+```
+
+### Run the Application
+
+Run the application interactively:
+
+```bash
+docker run -p 3000:3000 phrase-generator
+```
+
+### Stop and Remove Containers
+
+Stop all running containers:
+
+```bash
+docker stop $(docker ps -q)
+```
+
+Remove all containers:
+
+```bash
+docker rm $(docker ps -a -q)
+```
+
+### Remove All Unused Resources
+
+To clean up unused Docker images, containers, and networks:
+
+```bash
+docker system prune -a
+```
+
+### Check Running Containers
+
+List all active containers:
+
+```bash
+docker ps
+```
+
+## Dependencies
+
+- **Next.js 13**: The React framework used for building the application.
+- **TailwindCSS**: For styling the application.
+- **Docker**: Ensures the app runs in a consistent environment.
+- **TypeScript**: Provides static typing for better maintainability.
+
+All dependencies are managed within Docker, so no additional installations are required on your host system.
+
+## Notes
+
+- This project is designed for learning and experimentation with Next.js and Docker.
+- The application runs entirely inside the container, ensuring a consistent environment across different systems.
+---
